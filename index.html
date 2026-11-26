@@ -79,19 +79,6 @@ h3{font-size:1.16rem;font-weight:750}
 .stat{background:rgba(13,35,64,.72);border:1px solid var(--line);border-radius:var(--r-md);padding:13px 17px;min-width:128px}
 .stat b{display:block;font-size:1.45rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{font-size:.78rem;color:var(--muted)}
-.diagram{background:linear-gradient(158deg,rgba(18,48,85,.92),rgba(8,25,43,.94));border:1px solid var(--line2);border-radius:var(--r-lg);padding:24px}
-.diagram svg{width:100%;height:auto;display:block}
-.dnode{fill:rgba(6,18,32,.9);stroke:var(--line2);stroke-width:1.5;cursor:pointer;transition:.2s}
-.dnode:hover{stroke:var(--amber)}
-.dnode.active{stroke:var(--amber);fill:rgba(255,176,32,.13);filter:drop-shadow(0 0 8px rgba(255,176,32,.5))}
-.dlabel{fill:var(--text);font-family:var(--mono);font-size:11px;font-weight:700;pointer-events:none}
-.dsub{fill:var(--dim);font-family:var(--mono);font-size:9px;pointer-events:none}
-.dpath{fill:none;stroke:var(--trace);stroke-width:2;stroke-dasharray:6 5;animation:dash 1.6s linear infinite;transition:.2s}
-.dpath.m{stroke:var(--magenta)}.dpath.l{stroke:var(--lime)}
-.dpath.hot{stroke-width:3;stroke-dasharray:4 4;animation:dash .8s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-22}}
-.hero-note{margin-top:17px;font-size:.85rem;color:var(--muted)}
-.hero-note b{color:var(--lime)}
 .state-lab{display:grid;grid-template-columns:.95fr 1.05fr;gap:20px;align-items:start}
 .counter-stage{min-height:230px;border-radius:var(--r-md);border:1px dashed var(--line2);display:grid;place-items:center;padding:24px}
 .counter-val{font-size:4.4rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;transition:transform .18s}
@@ -118,7 +105,7 @@ pre.code{padding:16px;font-size:.76rem;line-height:1.72;color:#cfe6ff;overflow:a
 .switch input:checked + i{background:linear-gradient(115deg,var(--trace),var(--magenta));border-color:transparent}
 .switch input:checked + i::after{left:21px;background:#fff}
 
-/* ===== НОВЫЕ СТИЛИ ДЛЯ АКТИВНОСТИ И ПРОГРЕССА ===== */
+/* СТИЛИ ДЛЯ АКТИВНОСТИ */
 .activity-layout{display:grid;grid-template-columns:1fr;gap:24px}
 .chart-card{background:linear-gradient(158deg,rgba(18,48,85,.76),rgba(10,26,46,.86));border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
 .chart-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
@@ -159,7 +146,6 @@ pre.code{padding:16px;font-size:.76rem;line-height:1.72;color:#cfe6ff;overflow:a
   .progress-row{flex-direction:column;align-items:stretch}
   .progress-circle-wrap{margin:0 auto}
 }
-/* ===== /НОВЫЕ СТИЛИ ===== */
 
 .modules-layout{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:start}
 .modules-side{position:sticky;top:calc(var(--nav-h) + 18px)}
@@ -278,30 +264,30 @@ footer{border-top:1px solid var(--line);padding:42px 0 58px;background:rgba(6,18
         <div class="stat"><b>20</b><span>вопросов в тесте</span></div>
       </div>
     </div>
-    <div class="diagram">
-      <svg viewBox="0 0 420 300" role="img" aria-label="Схема потока">
+    <div class="diagram" style="background:linear-gradient(158deg,rgba(18,48,85,.92),rgba(8,25,43,.94));border:1px solid var(--line2);border-radius:var(--r-lg);padding:24px;">
+      <svg viewBox="0 0 420 300" role="img" aria-label="Схема потока" style="width:100%;height:auto;display:block;">
         <defs><marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#00d4ff"/></marker><marker id="arm" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#ff2d95"/></marker></defs>
-        <rect class="dnode hot" x="140" y="16" width="140" height="52" rx="12"/>
-        <text class="dlabel" x="210" y="38" text-anchor="middle">STATE</text>
-        <text class="dsub" x="210" y="54" text-anchor="middle">единый объект данных</text>
-        <rect class="dnode" x="266" y="118" width="140" height="52" rx="12"/>
-        <text class="dlabel" x="336" y="140" text-anchor="middle">VIEW</text>
-        <text class="dsub" x="336" y="156" text-anchor="middle">DOM из состояния</text>
-        <rect class="dnode" x="140" y="228" width="140" height="52" rx="12"/>
-        <text class="dlabel" x="210" y="250" text-anchor="middle">ACTION</text>
-        <text class="dsub" x="210" y="266" text-anchor="middle">клик · ввод · API</text>
-        <rect class="dnode" x="14" y="118" width="140" height="52" rx="12"/>
-        <text class="dlabel" x="84" y="140" text-anchor="middle">REDUCER</text>
-        <text class="dsub" x="84" y="156" text-anchor="middle">чистая функция</text>
-        <path class="dpath" d="M280 42 C330 42 336 78 336 112" marker-end="url(#ar)"/>
-        <path class="dpath m" d="M336 176 C336 214 288 254 286 254" marker-end="url(#arm)"/>
-        <path class="dpath l" d="M140 254 C90 254 84 214 84 176" marker-end="url(#ar)"/>
-        <path class="dpath" d="M84 112 C84 74 132 42 134 42" marker-end="url(#ar)"/>
+        <rect class="dnode hot" x="140" y="16" width="140" height="52" rx="12" fill="rgba(6,18,32,.9)" stroke="#ffb020" stroke-width="1.5"/>
+        <text class="dlabel" x="210" y="38" text-anchor="middle" fill="#e9f5ff" font-family="JetBrains Mono" font-size="11" font-weight="700">STATE</text>
+        <text class="dsub" x="210" y="54" text-anchor="middle" fill="#5d84ad" font-family="JetBrains Mono" font-size="9">единый объект данных</text>
+        <rect class="dnode" x="266" y="118" width="140" height="52" rx="12" fill="rgba(6,18,32,.9)" stroke="#2c619c" stroke-width="1.5"/>
+        <text class="dlabel" x="336" y="140" text-anchor="middle" fill="#e9f5ff" font-family="JetBrains Mono" font-size="11" font-weight="700">VIEW</text>
+        <text class="dsub" x="336" y="156" text-anchor="middle" fill="#5d84ad" font-family="JetBrains Mono" font-size="9">DOM из состояния</text>
+        <rect class="dnode" x="140" y="228" width="140" height="52" rx="12" fill="rgba(6,18,32,.9)" stroke="#2c619c" stroke-width="1.5"/>
+        <text class="dlabel" x="210" y="250" text-anchor="middle" fill="#e9f5ff" font-family="JetBrains Mono" font-size="11" font-weight="700">ACTION</text>
+        <text class="dsub" x="210" y="266" text-anchor="middle" fill="#5d84ad" font-family="JetBrains Mono" font-size="9">клик · ввод · API</text>
+        <rect class="dnode" x="14" y="118" width="140" height="52" rx="12" fill="rgba(6,18,32,.9)" stroke="#2c619c" stroke-width="1.5"/>
+        <text class="dlabel" x="84" y="140" text-anchor="middle" fill="#e9f5ff" font-family="JetBrains Mono" font-size="11" font-weight="700">REDUCER</text>
+        <text class="dsub" x="84" y="156" text-anchor="middle" fill="#5d84ad" font-family="JetBrains Mono" font-size="9">чистая функция</text>
+        <path class="dpath" d="M280 42 C330 42 336 78 336 112" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+        <path class="dpath m" d="M336 176 C336 214 288 254 286 254" fill="none" stroke="#ff2d95" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arm)"/>
+        <path class="dpath l" d="M140 254 C90 254 84 214 84 176" fill="none" stroke="#8bff2a" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+        <path class="dpath" d="M84 112 C84 74 132 42 134 42" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ar)"/>
         <circle cx="210" cy="150" r="26" fill="rgba(0,212,255,.08)" stroke="#2c619c" stroke-dasharray="4 4"/>
-        <text class="dsub" x="210" y="147" text-anchor="middle" fill="#93b6da">цикл</text>
-        <text class="dsub" x="210" y="160" text-anchor="middle" fill="#93b6da">замкнут</text>
+        <text class="dsub" x="210" y="147" text-anchor="middle" fill="#93b6da" font-family="JetBrains Mono" font-size="9">цикл</text>
+        <text class="dsub" x="210" y="160" text-anchor="middle" fill="#93b6da" font-family="JetBrains Mono" font-size="9">замкнут</text>
       </svg>
-      <p class="hero-note"><b>Правило:</b> данные текут в одну сторону. Нельзя менять DOM «в обход» состояния.</p>
+      <p style="margin-top:17px;font-size:.85rem;color:#93b6da;"><b style="color:#8bff2a">Правило:</b> данные текут в одну сторону. Нельзя менять DOM «в обход» состояния.</p>
     </div>
   </div>
 </section>
@@ -349,7 +335,6 @@ footer{border-top:1px solid var(--line);padding:42px 0 58px;background:rgba(6,18
   </div>
 </section>
 
-<!-- СЕКЦИЯ: АКТИВНОСТЬ И ПРОГРЕСС -->
 <section id="activity">
   <div class="wrap">
     <div class="head">
@@ -359,7 +344,6 @@ footer{border-top:1px solid var(--line);padding:42px 0 58px;background:rgba(6,18
     </div>
 
     <div class="activity-layout">
-      <!-- ГРАФИК -->
       <div class="chart-card">
         <div class="chart-head">
           <div class="chart-title">Динамика прочтения лекций</div>
@@ -394,7 +378,6 @@ footer{border-top:1px solid var(--line);padding:42px 0 58px;background:rgba(6,18
         </div>
       </div>
 
-      <!-- КРУГОВОЙ ПРОГРЕСС + ПОЛОСЫ -->
       <div class="progress-circle-card">
         <div class="progress-row">
           <div class="progress-circle-wrap">
@@ -546,9 +529,6 @@ footer{border-top:1px solid var(--line);padding:42px 0 58px;background:rgba(6,18
 <script>
 'use strict';
 
-/* =========================================================
-   ДАННЫЕ КУРСА (ЛЕКЦИИ И ЛАБЫ)
-   ========================================================= */
 const LECTURES = [
   { id:'L1', title:'Модуль 1. Как устроена веб-разработка', badge:'Основы',
     video:'<iframe src="https://vk.ru/video_ext.php?oid=-206078025&id=456241896&hash=f0fbe102e109c896&hd=3" width="1280" height="720" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>',
@@ -727,7 +707,6 @@ function toast(msg){
   clearTimeout(toast.t); toast.t = setTimeout(()=>t.classList.remove('show'), 2500);
 }
 
-// Навигация
 const burger = $('#burger'), navLinks = $('#navLinks');
 burger.addEventListener('click', ()=>{
   const open = navLinks.classList.toggle('open');
@@ -746,7 +725,6 @@ window.addEventListener('scroll', ()=>{
 });
 $('#toTop').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Счётчик
 const store = { state:{value:0,step:1}, renders:0 };
 function renderCounter(pulse=false){
   store.renders++;
@@ -772,9 +750,6 @@ $('#cStep').oninput = e=>{ store.state.step=+e.target.value; $('#cStepVal').text
 $('#cSpeed').oninput = e=>{ $('#cSpeedVal').textContent=e.target.value; };
 renderCounter();
 
-/* =========================================================
-   АКТИВНОСТЬ И ПРОГРЕСС: график + круговая диаграмма
-   ========================================================= */
 function getTimestamps(){
   const stamps = [];
   const allLessons = LECTURES.flatMap(m=>m.lessons);
@@ -892,15 +867,6 @@ function renderActivity(){
     xLabels.appendChild(txt);
   }
 
-  const pathPoints = [];
-  pathPoints.push({x: padL, y: padT + chartH});
-  
-  let prevCum = 0;
-  const stepPts = [{t: minT, v: 0}];
-  hours.forEach(h => {
-    stepPts.push({t: h, v: buckets[h]});
-  });
-  
   let curVal = 0;
   const pathData = [];
   let lastX = padL, lastY = padT + chartH - (0/ySteps)*chartH;
@@ -936,7 +902,6 @@ function renderActivity(){
 
 renderActivity();
 
-// Модули — аккордеон
 const modulesAccordion = $('#modulesAccordion');
 let openModuleId = LECTURES[0].id;
 
